@@ -8,15 +8,26 @@ const rl = readline.createInterface({
 });
 
 
-function rockPaperScissors(hand1, hand2) {
-
+function rockPaperScissors(inputHand1, inputHand2) {
+const hand1 = inputHand1.trim().toLowerCase()
+const hand2 = inputHand2.trim().toLowerCase()
+console.log(hand1, hand2)
   // Write code here
+  if ((hand1 === 'rock' && hand2 === 'paper') || (hand1 === 'paper' && hand2 === 'scissors') || (hand1 === 'scissors' && hand2 === 'rock')) {
+    return 'Hand 2 wins!';
+  } else if ((hand1 === 'rock' && hand2 ==='scissors') || (hand1 === 'paper' && hand2 === 'rock') || (hand1 === 'scissors' && hand2 === 'paper')) {
+    return 'Hand 1 wins!';
+  } else if (hand1 === hand2) {
+    return 'Tie game! Play again!';
+  } else {
+    return 'Please input a choice of rock, paper, or scissors.';
+  }
 
 }
 
 function getPrompt() {
-  rl.question('hand1: ', (answer1) => {
-    rl.question('hand2: ', (answer2) => {
+  rl.question('hand1: ', (answer1) => { 
+    rl.question('hand2: ', (answer2) => { 
       console.log( rockPaperScissors(answer1, answer2) );
       getPrompt();
     });
