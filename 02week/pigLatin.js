@@ -11,7 +11,25 @@ const rl = readline.createInterface({
 function pigLatin(word) {
 
   // Your code here
+const word = userInput;
+const vowelArray = ['a', 'e', 'i', 'o', 'u']; 
+const vowelPositionA = word.indexOf('a');
+const vowelPositionE = word.indexOf('e');
+const vowelPositionI = word.indexOf('i');
+const vowelPositionO = word.indexOf('o');
+const vowelPositionU = word.indexOf('u');
+console.log(vowelPositionU)
+//findTheVowel should equal a number
+// const cutTheWord = word.slice(vowelPosition)
+if (typeof word !== 'string') {
+  return 'Please input a string.'
+//first testing if the input is a string
+} else if (vowelPositionA === 0 || vowelPositionE === 0 || vowelPositionI ===0 || vowelPositionO === 0 || vowelPositionU == 0) {
+  return word + 'ay';
+//next test if the word starts with a vowel
+} else if () {
 
+}
 }
 
 
