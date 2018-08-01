@@ -8,10 +8,19 @@ const rl = readline.createInterface({
 });
 
 
-function rockPaperScissors(hand1, hand2) {
-
+function rockPaperScissors(inputHand1, inputHand2) {
+const hand1 = inputHand1.trim().toLowerCase()
+const hand2 = inputHand2.trim().toLowerCase()
+//To simplfy, start with the tie option to stop the function quicker, then give all the options for one hand to win, then else means the other hand wins.
   // Write code here
-
+  if (hand1 === hand2) {
+    return 'Tie game! Play again!'
+  } else if (hand1 === 'rock' && hand2 === 'paper' || hand1 === 'paper' && hand2 === 'scissors' || hand1 === 'scissors' && hand2 === 'rock') {
+    return 'Hand 2 wins!';
+  } else {
+    return 'Hand 1 wins!';
+  } 
+  
 }
 
 function getPrompt() {
@@ -49,3 +58,4 @@ if (typeof describe === 'function') {
   getPrompt();
 
 }
+
