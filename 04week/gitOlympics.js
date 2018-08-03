@@ -8,3 +8,4 @@ const printListOfOlympians=(array)=> {
 }
 
 printListOfOlympians(arr1)
+//this prints all the people in the array
