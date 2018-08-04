@@ -18,17 +18,31 @@ function printStacks() {
   console.log("b: " + stacks.b);
   console.log("c: " + stacks.c);
 }
-//Make the move-If move is valid(so you'll need is legal to run first), pop() to remove it where it's from. Then push() to add it to the end of the row. 
+//Make the move-If move is valid(so you'll need is legal to run before this), pop() to remove it where it's from. Then push() to add it to the end of the row. 
 //Choose a number to move. Use access an array item function to the arrayName[0] to move the numbers from the rows
 const movePiece=(startStack, endStack)=> {
-  let startMove=stacks[startStack].pop();
-  stacks[endStack].push(startMove);
+  let startTemp=stacks[startStack].pop();
+  let endTemp=stacks[endStack];
+  stacks[endStack].push(startTemp);
+  // isLegal(startTemp, endTemp);
+  
+  if (isLegal(startTemp, endTemp)) {
+    return stacks[endStack].push(startTemp);
+  } else {
+   return 'Please input a valid move.';
+ }
+  
   
 }
 //Move valid?-Use index of the array to write an if statement about valid moves? Or maybe it needs to be an object with a value attached to the numbers inside of the array?
-function isLegal() {
-  
-  
+const isLegal=(startTemp, endTemp)=> {
+
+  if (startTemp < endTemp) {
+    console.log(startTemp, endTemp)
+    return true;
+  } else {
+    return false;
+  } 
 }
 
 
