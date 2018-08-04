@@ -6,6 +6,7 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+//the board is an array of arrays
 let board = [
   [' ', ' ', ' '],
   [' ', ' ', ' '],
@@ -25,6 +26,7 @@ function printBoard() {
 
 function horizontalWin() {
   // Your code here
+  
 }
 
 function verticalWin() {
@@ -38,7 +40,7 @@ function diagonalWin() {
 function checkForWin() {
   // Your code here
 }
-
+//to use the tictactoe function, you will put in a number for the row and column
 function ticTacToe(row, column) {
   // Your code here
 }
