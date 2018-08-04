@@ -6,7 +6,7 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-
+//stacks is an object with arrays
 let stacks = {
   a: [4, 3, 2, 1],
   b: [],
@@ -18,16 +18,17 @@ function printStacks() {
   console.log("b: " + stacks.b);
   console.log("c: " + stacks.c);
 }
-//Make the move-If move is valid, pop() to remove it where it's from. Then push() to add it to the end of the row. Maybe even use splice to move it? Would it be bad to change the array in this case permanently?
-//Choose a number to move. iUse access an array item function to the arrayName[0] to move the numbers from the rows
-function movePiece() {
-  // Your code here
-
+//Make the move-If move is valid(so you'll need is legal to run first), pop() to remove it where it's from. Then push() to add it to the end of the row. 
+//Choose a number to move. Use access an array item function to the arrayName[0] to move the numbers from the rows
+const movePiece=(startStack, endStack)=> {
+  let startMove=stacks[startStack].pop();
+  stacks[endStack].push(startMove);
+  
 }
 //Move valid?-Use index of the array to write an if statement about valid moves? Or maybe it needs to be an object with a value attached to the numbers inside of the array?
 function isLegal() {
-  // Your code here
-
+  
+  
 }
 
 
@@ -41,6 +42,8 @@ function checkForWin() {
 
 function towersOfHanoi(startStack, endStack) {
   // Your code here
+  movePiece(startStack, endStack)
+  
 
 }
 
