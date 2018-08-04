@@ -19,32 +19,30 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 //Make the move-If move is valid(so you'll need is legal to run before this), pop() to remove it where it's from. Then push() to add it to the end of the row. 
-//Choose a number to move. Use access an array item function to the arrayName[0] to move the numbers from the rows
+
 const movePiece=(startStack, endStack)=> {
-  let startTemp=stacks[startStack].pop();
+  let startTemp=stacks[startStack];
   let endTemp=stacks[endStack];
-  stacks[endStack].push(startTemp);
-  // isLegal(startTemp, endTemp);
+ 
   
-  if (isLegal(startTemp, endTemp)) {
-    return stacks[endStack].push(startTemp);
-  } else {
-   return 'Please input a valid move.';
- }
+  if (isLegal(startTemp[startTemp.length-1], endTemp[endTemp.length-1])) {
+    const value = startTemp.pop();
+    return endTemp.push(value);
+  } 
   
   
 }
 //Move valid?-Use index of the array to write an if statement about valid moves? Or maybe it needs to be an object with a value attached to the numbers inside of the array?
 const isLegal=(startTemp, endTemp)=> {
-
-  if (startTemp < endTemp) {
-    console.log(startTemp, endTemp)
+ 
+  if(endTemp===undefined || startTemp <= endTemp){
+    console.log(true)
     return true;
   } else {
+    console.log(false)
     return false;
   } 
 }
-
 
 
 //Check for win -You'll use the length - 1 to first target the correct array inside the array. Make const for the different lengths to not alter the original array.
@@ -56,6 +54,7 @@ function checkForWin() {
 
 function towersOfHanoi(startStack, endStack) {
   // Your code here
+  
   movePiece(startStack, endStack)
   
 
