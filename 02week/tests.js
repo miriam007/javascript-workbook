@@ -6,29 +6,29 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-
+//Making another function to test that the user only puts in input of rock, paper, or scissors
 const isInputValid= (hand1, hand2)=> {
   if (((hand1 === 'rock') || (hand1 === 'paper') || (hand1 === 'scissors')) && ((hand2 ===    'rock') || (hand2 === 'paper') || (hand2 === 'scissors'))) {
     return true;
   }
-
+}
 function rockPaperScissors(inputHand1, inputHand2) {
+//These two variables help the trim and to lowercase test to work
  const hand1 = inputHand1.trim().toLowerCase()
  const hand2 = inputHand2.trim().toLowerCase()
+//Calling the isInputValid function inside rockPaperScissors
  const inputCheck=isInputValid(hand1, hand2)
 
- // Write code here
+ //First verify the user's input is correct. Then check for the tie, then all the conditions for one hand to win, then the else will imply that it includes all the options for the other hand to win
  if (inputCheck !== true) {
-   return 'Please input rock, paper, or scissors';
- } else if (hand1 === hand2) {
+  return 'Please input rock, paper, or scissors';
+  } else if (hand1 === hand2) {
     return 'Tie game! Play again!'
   } else if (hand1 === 'rock' && hand2 === 'paper' || hand1 === 'paper' && hand2 === 'scissors' || hand1 === 'scissors' && hand2 === 'rock') {
     return 'Hand two wins!';
   } else {
     return 'Hand one wins!';
   } 
-  
-
 }
 
 function getPrompt() {
