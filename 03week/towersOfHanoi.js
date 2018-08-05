@@ -13,49 +13,57 @@ let stacks = {
   c: []
 };
 
-function printStacks() {
+const printStacks=()=> {
   console.log("a: " + stacks.a);
   console.log("b: " + stacks.b);
   console.log("c: " + stacks.c);
 }
-//Make the move-If move is valid(so you'll need is legal to run before this), pop() to remove it where it's from. Then push() to add it to the end of the row. 
+//Make the move-If move is valid(so you'll need is legal to run before this move can happen), pop() to remove it from the stack it's from. Then push() to add it to the end of the stack. Pop and push work with the end variable in the array, so you don't need to access it using length
 
 const movePiece=(startStack, endStack)=> {
-  let startTemp=stacks[startStack];
-  let endTemp=stacks[endStack];
+  let startPlace=stacks[startStack];
+  let endPlace=stacks[endStack];
  
   
-  if (isLegal(startTemp[startTemp.length-1], endTemp[endTemp.length-1])) {
-    const value = startTemp.pop();
-    return endTemp.push(value);
+  if (isLegal(startPlace[startPlace.length-1], endPlace[endPlace.length-1])) {
+    const startValue = startPlace.pop();
+    return endPlace.push(startValue);
   } 
   
   
 }
-//Move valid?-Use index of the array to write an if statement about valid moves? Or maybe it needs to be an object with a value attached to the numbers inside of the array?
-const isLegal=(startTemp, endTemp)=> {
+//Move valid?-Input is the numbers pulled from the startValue and endValue. Compare them. When the array is empty, it is undefines, which must be included as an option. It returns boolean values
+//The test wants to use input for isLegal that target the array name from the stacks object, which equals a letter. How can I refactor this to allow for that input?
+const isLegal=(startPlace, endPlace)=> {
  
-  if(endTemp===undefined || startTemp <= endTemp){
-    console.log(true)
+  if(endPlace===undefined || startPlace < endPlace){
     return true;
   } else {
-    console.log(false)
     return false;
   } 
 }
 
 
-//Check for win -You'll use the length - 1 to first target the correct array inside the array. Make const for the different lengths to not alter the original array.
-//The second part of the arrays video loops through arrays to see if they match. Use this to check for win. Use the. Array.forEach(item, index) function.
-function checkForWin() {
-  // Your code here
+//A win happens when either all the blocks are in the correct order in the B or C array. Since the isLegal function prevents moves that aren't allowed, only when there is a win will all blocks be found in the B or C array. So you can use length to test for the win. The length for the B or C stack should equal 4. 
+const checkForWin=() => {
 
+  if ((stacks.b.length === 4) || (stacks.c.length === 4)) {
+    return 'You win!';
+  }
 }
 
-function towersOfHanoi(startStack, endStack) {
-  // Your code here
-  
-  movePiece(startStack, endStack)
+//Reset function- printStacks is already a function that prints out stacks. stacks is the object of arrays. maybe redine stacks in here and run that in printStacks
+const resetGame=(stacks)=> {
+  if (checkForWin === true) {
+    printStacks(stacks);
+  }
+}
+
+const towersOfHanoi=(startStack, endStack)=> {
+  if (checkForWin === true) {
+    return 'You win'
+  }
+  movePiece(startStack, endStack);
   
 
 }
