@@ -12,12 +12,25 @@ let stacks = {
   b: [],
   c: []
 };
-
+const startStacks = {
+  a: [4, 3, 2, 1],
+  b: [],
+  c: []
+};
 const printStacks=()=> {
   console.log("a: " + stacks.a);
   console.log("b: " + stacks.b);
   console.log("c: " + stacks.c);
 }
+
+//Reset function- printStacks is already a function that prints out stacks. stacks is the object of arrays. maybe redine stacks.a (targeting the first row, might need to also target the win row, and since you can win on both b or c, might just need to redine the whole thing) in here and run that in printStacks. could I change the let in stacks to const and call that in resetGame? Probably not because its outside of the scope. Make a new variable to represent the start of the game layout since the game makes the original variable used permeable.
+const resetGame=(startStacks)=> {
+  if (checkForWin === true) {
+    printStacks(startStacks);
+  }
+}
+
+
 //Make the move-If move is valid(so you'll need is legal to run before this move can happen), pop() to remove it from the stack it's from. Then push() to add it to the end of the stack. Pop and push work with the end variable in the array, so you don't need to access it using length
 
 const movePiece=(startStack, endStack)=> {
@@ -52,12 +65,6 @@ const checkForWin=() => {
   }
 }
 
-//Reset function- printStacks is already a function that prints out stacks. stacks is the object of arrays. maybe redine stacks in here and run that in printStacks
-const resetGame=(stacks)=> {
-  if (checkForWin === true) {
-    printStacks(stacks);
-  }
-}
 
 const towersOfHanoi=(startStack, endStack)=> {
   if (checkForWin === true) {
