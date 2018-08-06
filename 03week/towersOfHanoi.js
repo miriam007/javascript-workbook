@@ -12,21 +12,22 @@ let stacks = {
   b: [],
   c: []
 };
-const startStacks = {
-  a: [4, 3, 2, 1],
-  b: [],
-  c: []
-};
+
 const printStacks=()=> {
   console.log("a: " + stacks.a);
   console.log("b: " + stacks.b);
   console.log("c: " + stacks.c);
 }
 
-//Reset function- printStacks is already a function that prints out stacks. stacks is the object of arrays. maybe redine stacks.a (targeting the first row, might need to also target the win row, and since you can win on both b or c, might just need to redine the whole thing) in here and run that in printStacks. could I change the let in stacks to const and call that in resetGame? Probably not because its outside of the scope. Make a new variable to represent the start of the game layout since the game makes the original variable used permeable.
-const resetGame=(startStacks)=> {
+//Reset function- printStacks is already a function that prints out stacks. stacks is the object of arrays. Make a new variable to represent the start of the game layout since the game makes the original variable used change.
+const resetGame=(startingPoint)=> {
+  const startingPoint = {
+    a: [4, 3, 2, 1],
+    b: [],
+    c: []
+  };
   if (checkForWin === true) {
-    printStacks(startStacks);
+    return printStacks(startingPoint;
   }
 }
 
@@ -68,11 +69,11 @@ const checkForWin=() => {
 
 const towersOfHanoi=(startStack, endStack)=> {
   if (checkForWin === true) {
-    return 'You win'
+    resetGame(startingPoint);
+    return 'You win';
+  } else {
+    movePiece(startStack, endStack);
   }
-  movePiece(startStack, endStack);
-  
-
 }
 
 function getPrompt() {
@@ -84,6 +85,16 @@ function getPrompt() {
     });
   });
 }
+
+//Could add a function that tests for input of the user is only a, b, or c. Then write a test for that
+// const isInputValid=(startStack, endStack)=>{
+//   if (((startStack === 'a') || (startStack === 'b') || (startStack === 'c')) && ((endStack===    'a') || (endStack=== 'b') || (endStack === 'c'))) {
+//     return true;
+//   }
+// }
+
+//Could add a test checking that reset works?
+
 
 // Tests
 
@@ -122,7 +133,23 @@ if (typeof describe === 'function') {
       assert.equal(checkForWin(), false);
     });
   });
-
+  describe('#resetGame()', () => {
+    it('should reset the game after a win', () => {
+      stacks = { a: [], b: [4, 3, 2, 1], c: [] };
+      assert.equal(resetGame(), false);
+      stacks = { a: [4, 3, 2, 1], b: [], c: [] };
+      assert.equal(resetGame(), true);
+    });
+  });
+  //Not totally sure how to change this to test the input of startStack and endStack 
+  // describe('#isInputValid()', () => {
+  //   it('should only allow valid user input', () => {
+  //     stacks = { a: [], b: [4, 3, 2, 1], c: [] };
+  //     assert.equal(isInputValid(), false);
+  //     stacks = { a: [4, 3, 2, 1], b: [], c: [] };
+  //     assert.equal(isInputValid(), true);
+  //   });
+  // });
 } else {
 
   getPrompt();
