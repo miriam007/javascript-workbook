@@ -15,20 +15,17 @@ const rl = readline.createInterface({
   //First function returns true if word is a string
 const isInputString = (word) => {
  if (typeof word === 'string') {
-   return true;
- } else {
-   return false;
- }
+   return typeof word === 'string';
+}
 }
 //second function then takes the string word and trims and lowercases it and spits it out
 const validWord= (word) => {
-  word.trim().toLowerCase();
-  return word;
+  return word.trim().toLowerCase();;
 }
 //third function creates the pig Latin word, maybe change includes later since its not compatible with EI
 const makePiggy= (word) => {
   const vowelArr = ['a', 'e', 'i', 'o', 'u'];
-for (let i=0; i < word.length; i++) {
+  for (let i=0; i < word.length; i++) {
   if (vowelArr.includes(word[0])) {
     return word + "yay";
   } else if (vowelArr.includes(word[i])) {
