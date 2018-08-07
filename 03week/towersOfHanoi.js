@@ -7,17 +7,19 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 //stacks is an object with arrays
-// const startingPoint = {
-//   a: [4, 3, 2, 1],
-//   b: [],
-//   c: []
-// };
+let startingPoint = {
+  a: [4, 3, 2, 1],
+  b: [],
+  c: []
+};
+
 let stacks = {
   a: [1],
   b: [],
   c: [4, 3, 2,]
  };  
 
+ 
 const printStacks=()=> {
   console.log("a: " + stacks.a);
   console.log("b: " + stacks.b);
@@ -27,19 +29,15 @@ const printStacks=()=> {
 
 //Reset function- reset the variable back to the startingPoint
 const resetGame=()=> {
-  let stacks = {
-    a: [4, 3, 2, 1],
-    b: [],
-    c: []
-  };
+  stacks=startingPoint;
 }
 
 
 //Make the move-If move is valid(so you'll need is legal to run before this move can happen), pop() to remove it from the stack it's from. Then push() to add it to the end of the stack. Pop and push work with the end variable in the array, so you don't need to access it using length
 
 const movePiece=(startStack, endStack)=> {
-  let startPlace=stacks[startStack];
-  let endPlace=stacks[endStack];
+  const startPlace=stacks[startStack];
+  const endPlace=stacks[endStack];
   if (isLegal(startPlace[startPlace.length-1], endPlace[endPlace.length-1])) {
     const startValue = startPlace.pop();
     return endPlace.push(startValue);
@@ -69,7 +67,7 @@ const towersOfHanoi=(startStack, endStack)=> {
   if (isLegal(startStack, endStack)) {
     movePiece(startStack, endStack);
     if (checkForWin(stacks)) {
-      resetGame();
+      resetGame(stacks);
       return console.log('You won!!! Play again?');
     }
   } else {
