@@ -92,7 +92,7 @@ function getPrompt() {
 //   }
 // }
 
-//Could add a test checking that reset works?
+//Could add a test checking that move piece works?
 
 
 // Tests
