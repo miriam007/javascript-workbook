@@ -16,7 +16,7 @@ let board = [
 let playerTurn = 'X';
 
 //switch the turn of the players from X to O
-//const switchPlayer=(row,column)=>playerTurn
+// const switchPlayer()=>(playerTurn === 'X') ? playerTurn === 'O' : playerTurn === 'X';
 const switchPlayer=(row, column) =>{
   if (playerTurn ==='X') {
     playerTurn = 'O';
