@@ -19,6 +19,12 @@ let stacks = {
   c: []
  };  
 
+// let stacks = {
+//   a: [1],
+//   b: [],
+//   c: [4,3,2]
+// };
+
  
 const printStacks=()=> {
   console.log("a: " + stacks.a);
@@ -32,6 +38,12 @@ const resetGame=()=> {
   stacks=startingPoint;
 }
 
+//Could add a function that tests for input of the user is only a, b, or c. Then write a test for that
+const isInputValid=(startStack, endStack)=>{
+  if (((startStack === 'a') || (startStack === 'b') || (startStack === 'c')) && ((endStack === 'a') || (endStack=== 'b') || (endStack === 'c'))) {
+    return true;
+  } 
+}
 
 //Make the move-If move is valid(so you'll need is legal to run before this move can happen), pop() to remove it from the stack it's from. Then push() to add it to the end of the stack. Pop and push work with the end variable in the array, so you don't need to access it using length
 
@@ -64,14 +76,14 @@ const checkForWin=(stacks) => {
 };
 
 const towersOfHanoi=(startStack, endStack)=> {
-  if (isLegal(startStack, endStack)) {
+  if ((isLegal(startStack, endStack)) && (isInputValid(startStack, endStack))) {
     movePiece(startStack, endStack);
     if (checkForWin(stacks)) {
       resetGame(stacks);
       console.log('You won!!! Play again?');
     }
   } else {
-    console.log('Invalid move. Try again.');
+    return console.log('Invalid move. Try again.');
   }
 };
 
@@ -85,12 +97,7 @@ function getPrompt() {
   });
 }
 
-//Could add a function that tests for input of the user is only a, b, or c. Then write a test for that
-// const isInputValid=(startStack, endStack)=>{
-//   if (((startStack === 'a') || (startStack === 'b') || (startStack === 'c')) && ((endStack===    'a') || (endStack=== 'b') || (endStack === 'c'))) {
-//     return true;
-//   }
-// }
+
 
 //Could add a test checking that move piece works?
 
