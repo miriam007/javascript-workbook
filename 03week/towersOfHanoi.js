@@ -158,6 +158,14 @@ if (typeof describe === 'function') {
   //     assert.equal(isInputValid(), true);
   //   });
   // });
+  // describe('#movePiece()', () => {
+  //   it('should move a piece', () => {
+  //     stacks = { a: [], b: [4, 3, 2, 1], c: [] };
+  //     assert.equal(resetGame(), false);
+  //     stacks = { a: [4, 3, 2, 1], b: [], c: [] };
+  //     assert.equal(resetGame(), true);
+  //   });
+  // });
 } else {
 
   getPrompt();
