@@ -53,7 +53,9 @@ const movePiece=(startStack, endStack)=> {
   if (isLegal(startPlace[startPlace.length-1], endPlace[endPlace.length-1])) {
     const startValue = startPlace.pop();
     return endPlace.push(startValue);
-  }  
+  }  else {
+    return console.log('Invalid move.');
+  }
 };
 //Move valid?-Input is the numbers pulled from the startValue and endValue. Compare them. When the array is empty, it is undefines, which must be included as an option. It returns boolean values
 //The test wants to use input for isLegal that target the array name from the stacks object, which equals a letter. How can I refactor this to allow for that input?
