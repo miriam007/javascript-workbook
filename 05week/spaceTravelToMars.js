@@ -10,7 +10,27 @@ let jobTypes = {
 };
 
 // Your code here
-
+class CrewMember{
+  constructor(name, job, specialSkill, ship){
+    this.name=name;
+    this.job=job;
+    this.specialSkill=specialSkill;
+    this.ship=ship;
+  }
+} 
+enterShip(){
+  return 
+}
+class SHIP{
+  constructor(name, type, ability, crewLength){
+    this.name=name;
+    this.type=type;
+    this.ability=ability;
+    this.crewLength=crewLength;
+  }
+}
+const crewMember1= new CrewMember('Rick Martinez', 'pilot', 'chemistry');
+const MAV= new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit')
 //tests
 if (typeof describe === 'function'){
   describe('CrewMember', function(){
