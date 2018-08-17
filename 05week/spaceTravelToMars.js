@@ -21,7 +21,7 @@ class CrewMember{
 enterShip(){
   return 
 }
-class SHIP{
+class Ship{
   constructor(name, type, ability, crewLength){
     this.name=name;
     this.type=type;
@@ -30,7 +30,8 @@ class SHIP{
   }
 }
 const crewMember1= new CrewMember('Rick Martinez', 'pilot', 'chemistry');
-const MAV= new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit')
+const MAV= new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
+const hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
 //tests
 if (typeof describe === 'function'){
   describe('CrewMember', function(){
