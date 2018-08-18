@@ -124,6 +124,7 @@ class Game {
   }
   //this moves the pieces on the board
   moveChecker(source, destination){
+    if(isLegalInput (source, destination)){
     //the source row and column are parsed out to be variables
     const sourceRow= parseInt(source.charAt(0));
     const sourceColumn=parseInt(source.charAt(1));
@@ -140,6 +141,9 @@ class Game {
       let jumpedColumn= destinationColumn- sourceColumn > 0 ? sourceColumn +1 : destinationColumn +1;
       this.board.grid[jumpedRow][jumpedColumn]=null;
       this.board.checkers.pop();
+      }
+    } else {
+      console.log('Invalid move');
     }
   }
   start() {
@@ -147,7 +151,19 @@ class Game {
     this.board.createCheckers();
   }
 }
-
+//this determines if user is putting in valid rows and columns
+const isLegalInput= (source, destination)=> {
+  //the source row and column are parsed out to be variables
+  const sourceRow= parseInt(source.charAt(0));
+  const sourceColumn=parseInt(source.charAt(1));
+  //the destination row and column are parsed out to be variables
+  const destinationRow=parseInt(destination.charAt(0));
+  const destinationColumn=parseInt(destination.charAt(1));
+  //is the input from the user legal? we only have 8 rows and 8 columns. we need to check the user input for both the source and destination
+  let sourceGood=(sourceRow >= 0 && sourceRow < 8) && (sourceColumn >= 0 && sourceColumn < 8);
+  let destinationGood=(destinationRow >= 0 && destinationRow < 8) && (destinationColumn >= 0 && destinationColumn < 8);
+  return (sourceGood && destinationGood)
+}
 function getPrompt() {
   game.board.viewGrid();
   rl.question('which piece?: ', (whichPiece) => {
