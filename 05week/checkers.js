@@ -104,6 +104,7 @@ class Board {
       [7,4],
       [7,6]
     ]
+    //this for loop runs through the arrays of the starting black pieces
     for (let i=0; i<12; i++) {
       let blackRow=blackPosition[i][0];
       let blackColumn=blackPosition[i][1];
@@ -117,6 +118,19 @@ class Board {
 class Game {
   constructor() {
     this.board = new Board;
+  }
+  //this moves the pieces on the board
+  moveChecker(source, destination){
+    //the source row and column are parsed out to be variables
+    const sourceRow= parseInt(source.charAt(0));
+    const sourceColumn=parseInt(source.charAt(1));
+    //the destination row and column are parsed out to be variables
+    const destinationRow=parseInt(destination.charAt(0));
+    const destinationColumn=parseInt(destination.charAt(1));
+    //this makes the destination spot equal to the piece in the source spot
+    this.board.grid[destinationRow][destinationColumn]=this.board.grid[sourceRow][sourceColumn];
+    //this sets the place where the piece moved from to be an empty square
+    this.board.grid[sourceRow][sourceColumn]=null;
   }
   start() {
     this.board.createGrid();
