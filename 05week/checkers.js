@@ -124,7 +124,8 @@ class Game {
   }
   //this moves the pieces on the board
   moveChecker(source, destination){
-    if(isLegalInput (source, destination)){
+    if(isLegalInput(source, destination) && isLegalMove(source, destination)){
+
     //the source row and column are parsed out to be variables
     const sourceRow= parseInt(source.charAt(0));
     const sourceColumn=parseInt(source.charAt(1));
@@ -163,6 +164,20 @@ const isLegalInput= (source, destination)=> {
   let sourceGood=(sourceRow >= 0 && sourceRow < 8) && (sourceColumn >= 0 && sourceColumn < 8);
   let destinationGood=(destinationRow >= 0 && destinationRow < 8) && (destinationColumn >= 0 && destinationColumn < 8);
   return (sourceGood && destinationGood)
+}
+//is the move the piece is trying to make, is it legal?
+const isLegalMove= (source, destination)=> {
+  //the source row and column are parsed out to be variables
+  const sourceRow= parseInt(source.charAt(0));
+  const sourceColumn=parseInt(source.charAt(1));
+  //the destination row and column are parsed out to be variables
+  const destinationRow=parseInt(destination.charAt(0));
+  const destinationColumn=parseInt(destination.charAt(1));
+  let goodRowMove=(Math.abs(destinationRow -sourceRow)<= 2);
+  let goodColumnMove=(Math.abs(destinationColumn-sourceColumn)=== 1);
+  let nullSpace= this.grid[destinationRow][destinationColumn]=== null;
+
+  return (goodRowMove && goodColumnMove && nullSpace);
 }
 function getPrompt() {
   game.board.viewGrid();
