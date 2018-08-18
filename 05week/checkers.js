@@ -69,6 +69,7 @@ class Board {
 
   // Your code here
   createCheckers(){
+    //variable to mark starting places
     const whitePosition=[
       [0,1],
       [0,3],
@@ -83,6 +84,7 @@ class Board {
       [2,5],
       [2,7]
     ]
+    //this for loop runs through the arrays of the starting white pieces and puts them on the board
     for (let i=0; i<12; i++) {
       let whiteRow=whitePosition[i][0];
       let whiteColumn=whitePosition[i][1];
@@ -90,6 +92,7 @@ class Board {
       this.checkers.push(whiteChecker);
       this.grid[whiteRow][whiteColumn]=whiteChecker;
     }
+    //variable to mark starting places
     const blackPosition= [
       [5,0],
       [5,2],
@@ -104,7 +107,7 @@ class Board {
       [7,4],
       [7,6]
     ]
-    //this for loop runs through the arrays of the starting black pieces
+    //this for loop runs through the arrays of the starting black pieces and puts them on the board
     for (let i=0; i<12; i++) {
       let blackRow=blackPosition[i][0];
       let blackColumn=blackPosition[i][1];
@@ -131,6 +134,13 @@ class Game {
     this.board.grid[destinationRow][destinationColumn]=this.board.grid[sourceRow][sourceColumn];
     //this sets the place where the piece moved from to be an empty square
     this.board.grid[sourceRow][sourceColumn]=null;
+    //if you can jump, you need an empty space 2 rows away
+    if(Math.abs(destinationRow- sourceRow)=== 2){
+      let jumpedRow=destinationRow-sourceRow > 0 ? sourceRow +1 : destinationRow + 1;
+      let jumpedColumn= destinationColumn- sourceColumn > 0 ? sourceColumn +1 : destinationColumn +1;
+      this.board.grid[jumpedRow][jumpedColumn]=null;
+      this.board.checkers.pop();
+    }
   }
   start() {
     this.board.createGrid();
