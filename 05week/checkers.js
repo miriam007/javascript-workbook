@@ -16,13 +16,7 @@ class Checker {
     }
   }
 }
-// const Checker(color)=> {
-//   if (color === white) {
-//     this.symbol='W';
-//   } else {
-//     this.symbol='B';
-//   }
-// }
+
 
 class Board {
   constructor() {
@@ -175,9 +169,9 @@ const isLegalMove= (source, destination)=> {
   const destinationColumn=parseInt(destination.charAt(1));
   let goodRowMove=(Math.abs(destinationRow -sourceRow)<= 2);
   let goodColumnMove=(Math.abs(destinationColumn-sourceColumn)=== 1);
-  let nullSpace= this.grid[destinationRow][destinationColumn]=== null;
+  // let nullSpace= this.grid[destinationRow][destinationColumn]=== null;
 
-  return (goodRowMove && goodColumnMove && nullSpace);
+  return (goodRowMove && goodColumnMove);
 }
 function getPrompt() {
   game.board.viewGrid();
