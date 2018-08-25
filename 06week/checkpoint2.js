@@ -100,5 +100,9 @@ console.log(weatherStates.filter(unique))
 
 //find the id of the object in weather that has a min_temp of 15.915
 
-const idealTemp = 
+const idealTemp = weather.filter((item, index, array)=>{
+    return item.min_temp === 15.915
+}).map((item)=>{
+    return item.id;
+})
 console.log(idealTemp)
