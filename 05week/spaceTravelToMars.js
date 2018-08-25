@@ -18,8 +18,9 @@ class CrewMember{
     this.ship=ship;
   }
 } 
-enterShip(){
-  return 
+enterShip(newShip){
+  newShip.addCrew(this);
+  this.ship = newShip
 }
 class Ship{
   constructor(name, type, ability, crewLength){
