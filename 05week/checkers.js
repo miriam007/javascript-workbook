@@ -169,10 +169,12 @@ const isLegalMove= (source, destination)=> {
   const destinationColumn=parseInt(destination.charAt(1));
   let goodRowMove=(Math.abs(destinationRow -sourceRow)<= 2);
   let goodColumnMove=(Math.abs(destinationColumn-sourceColumn)=== 1);
-  // let nullSpace= this.grid[destinationRow][destinationColumn]=== null;
+
+  //let nullSpace= this.board[destinationRow][destinationColumn]=== null;
 
   return (goodRowMove && goodColumnMove);
 }
+
 function getPrompt() {
   game.board.viewGrid();
   rl.question('which piece?: ', (whichPiece) => {
