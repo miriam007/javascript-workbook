@@ -2,22 +2,38 @@
 
 const assert = require('assert');
 
+// Create a forEach() function that takes an array of items and a function that runs the function arr.length number of times.
+const loopingThrough = (array, callback) => {
+  for(let i =0 ; i < array.length; i++){
+    console.log(array[i]);
+    if(callback){
+      console.log('callback present');
+      for(let j; j< array.length; j++){
+        callback(array[j]);
+      }
+    }
+  }
+ }
 function forEach(arr, callback) {
   // Your code here
 }
 
+// Create a map() function that takes an array of items and a function that returns an array with each item manipulated by that function.
 function map(arr, callback) {
   // Your code here
 }
 
+// Create a filter() function that takes an array of items and a function that returns an array with only the items that return true in the function.
 function filter(arr, callback) {
   // Your code here
 }
 
+// Create a some() function that takes an array of items and a function that returns true or false if any of the items return true in the function.
 function some(arr, callback) {
   // Your code here
 }
 
+// Create an every() function that takes an array of items and a function that returns true or false if all of the items return true in the function.
 function every(arr, callback) {
   // Your code here
 }
