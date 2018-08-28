@@ -30,9 +30,20 @@ class Ship{
     this.crewLength=crewLength;
   }
 }
-const crewMember1= new CrewMember('Rick Martinez', 'pilot', 'chemistry');
-const MAV= new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
-const hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
+addCrew(crewMember){
+  this.crew.push(crewMember) 
+}
+missionStatement(){
+  if (this.crew.length > 0){
+    return this.ability
+  } else {
+    return "Can't perform a mission yet."
+  }
+}
+
+let crewMember1= new CrewMember('Rick Martinez', 'pilot', 'chemistry');
+let mav= new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
+let hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
 //tests
 if (typeof describe === 'function'){
   describe('CrewMember', function(){
