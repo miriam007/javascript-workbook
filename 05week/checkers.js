@@ -80,9 +80,9 @@ class Board {
     ]
     //this for loop runs through the arrays of the starting white pieces and puts them on the board
     for (let i=0; i<12; i++) {
-      let whiteRow=whitePosition[i][0];
-      let whiteColumn=whitePosition[i][1];
-      let whiteChecker= new Checker('white');
+      const whiteRow=whitePosition[i][0];
+      const whiteColumn=whitePosition[i][1];
+      const whiteChecker= new Checker('white');
       this.checkers.push(whiteChecker);
       this.grid[whiteRow][whiteColumn]=whiteChecker;
     }
@@ -103,9 +103,9 @@ class Board {
     ]
     //this for loop runs through the arrays of the starting black pieces and puts them on the board
     for (let i=0; i<12; i++) {
-      let blackRow=blackPosition[i][0];
-      let blackColumn=blackPosition[i][1];
-      let blackChecker= new Checker('black');
+      const blackRow=blackPosition[i][0];
+      const blackColumn=blackPosition[i][1];
+      const blackChecker= new Checker('black');
       this.checkers.push(blackChecker);
       this.grid[blackRow][blackColumn]=blackChecker
     }
@@ -132,8 +132,8 @@ class Game {
     this.board.grid[sourceRow][sourceColumn]=null;
     //if you can jump, you need an empty space 2 rows away
     if(Math.abs(destinationRow- sourceRow)=== 2){
-      let jumpedRow=destinationRow-sourceRow > 0 ? sourceRow +1 : destinationRow + 1;
-      let jumpedColumn= destinationColumn- sourceColumn > 0 ? sourceColumn +1 : destinationColumn +1;
+      const jumpedRow=destinationRow-sourceRow > 0 ? sourceRow +1 : destinationRow + 1;
+      const jumpedColumn= destinationColumn- sourceColumn > 0 ? sourceColumn +1 : destinationColumn +1;
       this.board.grid[jumpedRow][jumpedColumn]=null;
       this.board.checkers.pop();
       }
@@ -155,8 +155,8 @@ const isLegalInput= (source, destination)=> {
   const destinationRow=parseInt(destination.charAt(0));
   const destinationColumn=parseInt(destination.charAt(1));
   //is the input from the user legal? we only have 8 rows and 8 columns. we need to check the user input for both the source and destination
-  let sourceGood=(sourceRow >= 0 && sourceRow < 8) && (sourceColumn >= 0 && sourceColumn < 8);
-  let destinationGood=(destinationRow >= 0 && destinationRow < 8) && (destinationColumn >= 0 && destinationColumn < 8);
+  const sourceGood=(sourceRow >= 0 && sourceRow < 8) && (sourceColumn >= 0 && sourceColumn < 8);
+  const destinationGood=(destinationRow >= 0 && destinationRow < 8) && (destinationColumn >= 0 && destinationColumn < 8);
   return (sourceGood && destinationGood)
 }
 //is the move the piece is trying to make, is it legal?
@@ -167,8 +167,8 @@ const isLegalMove= (source, destination)=> {
   //the destination row and column are parsed out to be variables
   const destinationRow=parseInt(destination.charAt(0));
   const destinationColumn=parseInt(destination.charAt(1));
-  let goodRowMove=(Math.abs(destinationRow -sourceRow)<= 2);
-  let goodColumnMove=(Math.abs(destinationColumn-sourceColumn)=== 1);
+  const goodRowMove=(Math.abs(destinationRow -sourceRow)<= 2);
+  const goodColumnMove=(Math.abs(destinationColumn-sourceColumn)=== 1);
 
   //let nullSpace= this.board[destinationRow][destinationColumn]=== null;
 
