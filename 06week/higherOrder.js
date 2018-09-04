@@ -14,29 +14,62 @@ const loopingThrough = (array, callback) => {
     }
   }
  }
-function forEach(arr, callback) {
-  // Your code here
-}
+
 
 // Create a map() function that takes an array of items and a function that returns an array with each item manipulated by that function.
-function map(arr, callback) {
-  // Your code here
-}
+
+  let map = (obj, callback) => {
+    let mapped = [];
+    for (let i = 0; i < obj.length; i++) {
+      mapped.push(callback(obj[i]));
+    }
+    return mapped;
+  }
+  map(arr, (item) => {
+    return `${item}!`;
+  });
 
 // Create a filter() function that takes an array of items and a function that returns an array with only the items that return true in the function.
-function filter(arr, callback) {
-  // Your code here
+let filter = (obj, callback) => {
+  let filtered = [];
+  for (let i = 0; i < obj.length; i++) {
+    if (callback(obj[i])) {
+      filtered.push(obj[i]);
+    }
+  }
+  return filtered;
 }
 
+filter(arr, (item) => {
+  return item > 1;
+});
+
 // Create a some() function that takes an array of items and a function that returns true or false if any of the items return true in the function.
-function some(arr, callback) {
-  // Your code here
+let some = (obj, callback) => {
+  for (let i = 0; i < obj.length; i++) {
+    if (callback(obj[i])) {
+      return true;
+    }
+  }
+  return false;
 }
 
 // Create an every() function that takes an array of items and a function that returns true or false if all of the items return true in the function.
-function every(arr, callback) {
-  // Your code here
+arr3 = [0];
+
+let every = (obj, callback) => {
+  for (let i = 0; i < arr3.length; i++) {
+    if (!callback(arr3[i])) {
+      return false;
+    }
+  }
+  return true;
 }
+
+every(arr3, (item) => {
+  console.log(item);
+  return item === 0; // true
+});
 
 if (typeof describe === 'function') {
 
